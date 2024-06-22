@@ -21,16 +21,17 @@ const Edit = ({ add }) => {
     setid(id + 1);
     add((prevData) => {
       return [
-        ...prevData,
         {
           id,
           note,
           date,
           time,
         },
+        ...prevData,
       ];
     });
   }
+  //原本的想法應該要是在這裏面撰寫一個post的副作用傳送資料到資料庫裡，但其實只需要針對我們在index.jsx裡的data設定useEffect，讓它每次變動的時候就執行post的動作
 
   return (
     <div>
