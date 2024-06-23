@@ -32,7 +32,7 @@ const Edit = ({ add,isSubmit }) => {
       ];
     });
   }
-  //原本的想法應該要是在這裏面撰寫一個post的副作用傳送資料到資料庫裡，但其實只需要針對我們在index.jsx裡的data設定useEffect，讓它每次變動的時候就執行post的動作
+  //原本的想法應該要是在這裏面撰寫一個post的副作用傳送資料到資料庫裡，但其實只需要針對我們在index.jsx裡的data設定useEffect，讓它每次變動的時候就執行post的動作，另外這裡多加了一個改變狀態的副作用，用意是要在我們希望它post才post出去
 
   return (
     <div>
