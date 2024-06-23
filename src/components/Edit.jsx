@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Edit = ({ add }) => {
+const Edit = ({ add,isSubmit }) => {
   const [id, setid] = useState(0);
   const [note, setNote] = useState("");
   function noteChange(e) {
@@ -18,6 +18,7 @@ const Edit = ({ add }) => {
   }
 
   function addItem() {
+    isSubmit.current = true
     setid(id + 1);
     add((prevData) => {
       return [

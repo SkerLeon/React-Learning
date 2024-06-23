@@ -1,6 +1,6 @@
 import Item from "../components/Item";
 
-const List = ({ listData, deleteData }) => {
+const List = ({ listData, deleteData,isSubmit }) => {
   return (
     <div className="list">
       {listData.map((item) => {
@@ -13,6 +13,7 @@ const List = ({ listData, deleteData }) => {
             key={id}
             id ={id}
             deleteData={deleteData}
+            isSubmit={isSubmit}
           />
         );
       })}

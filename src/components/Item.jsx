@@ -1,5 +1,6 @@
-const Item = ({id,note,date,time,deleteData})=>{
+const Item = ({id,note,date,time,deleteData,isSubmit})=>{
     function deleteItemData(){
+        isSubmit.current = true
         deleteData((prev)=>{
             return prev.filter(item=>item.id !== id)
             //呼叫index裡的setData這個修改data的函式執行，重新回傳一個根據條件修改新的陣列，進而重新渲染

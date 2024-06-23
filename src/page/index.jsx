@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useRef } from "react";
 //引用我要使用的react方法
 import Edit from "../components/Edit";
 import List from "../components/List";
@@ -37,10 +37,14 @@ const Home = () => {
   //在React的概念上，useState這個hook都會有一個狀態及一個變動這個狀態的函式，經由這個函式變動react才會知道畫面需要更新
   //由於react是單向數據流，所以通常都會在父組件上面設定一個值，再用props的方式傳入子組件使用這個狀態，當子組件需要更動數值時我們就必須要把變動這個數值的函式傳入子組件中，所以會變成當兩個資料需要交互，父組件就承擔起中轉站的概念，另外每個組件上面的useState都是獨立的，不會互相影響
 
+  const isSubmit = useRef(false)
+
   useEffect(()=>{
-    postData(data)
+    if(isSubmit.current){
+      postData(data)
+    }
   },[data])
-  //這邊的useEffect是去偵測data變動過後執行post的動作
+  //在這個useEffect裡使用了useRef的hook去判斷能不能執行post，因為不這樣設定當每次data呼叫api進來的時候，基於useEffect的特性會導致[]被post到資料庫裡，導致資料消失
   
   useEffect(()=>{
     fetchData(setData)
@@ -53,8 +57,8 @@ const Home = () => {
 
   return (
     <div className="app">
-      <Edit add={setData} />
-      <List listData={data} deleteData={setData} />
+      <Edit add={setData} isSubmit={isSubmit}/>
+      <List listData={data} deleteData={setData} isSubmit={isSubmit}/>
     </div>
   );
   //在jsx的寫法中，都是利用函式去return出HTML的結構，並把一些JS的變數透過{}的方式加入進來
