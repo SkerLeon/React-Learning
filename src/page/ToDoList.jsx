@@ -32,7 +32,7 @@ async function postData(data){
 }
 //這邊建立了一個async函式(異步函式)去新增資料
 
-const Home = () => {
+const ToDoList = () => {
   const [data, setData] = useState([]);
   //在React的概念上，useState這個hook都會有一個狀態及一個變動這個狀態的函式，經由這個函式變動react才會知道畫面需要更新
   //由於react是單向數據流，所以通常都會在父組件上面設定一個值，再用props的方式傳入子組件使用這個狀態，當子組件需要更動數值時我們就必須要把變動這個數值的函式傳入子組件中，所以會變成當兩個資料需要交互，父組件就承擔起中轉站的概念，另外每個組件上面的useState都是獨立的，不會互相影響
@@ -64,4 +64,4 @@ const Home = () => {
   //在jsx的寫法中，都是利用函式去return出HTML的結構，並把一些JS的變數透過{}的方式加入進來
 };
 
-export default Home;
+export default ToDoList;
